@@ -3,10 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
+  <title>CSS基礎 & テキスト装飾 ハンズオン</title>
+  
+  <!-- CHAPTER 3: ページにCSSを適用する -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>githubでの変更が反映されます</h1>
-<p1>(´Д｀)</p1>
+
+  <!-- メインコンテンツ領域 -->
+  <main class="container">
+
+    <!-- CHAPTER 4-8: 見出しにサブタイトルをつける -->
+    <h1 class="main-title">
+      Webデザインの魅力
+      <span class="subtitle">〜 CSSで作る表現豊かな世界 〜</span>
+    </h1>
+
+    <!-- CHAPTER 4-3: 段落のテキストをリード文だけ太字にする -->
+    <p class="lead-text">
+      この文章はリード文です。Webサイトを訪問したユーザーが最初に目にする重要な導入部分となるため、本文よりも少し強調して読みやすく配置します。
+    </p>
+
+    <p class="body-text">
+      ここからは本文の段落です。CSS（Cascading Style Sheets）を使うことで、文字の大きさや色、行間、背景など、Webページの見た目を自由自在にコントロールできます。HTMLだけではシンプルなテキストデータですが、CSSを適用することでデザイン性や読みやすさが飛躍的に向上します。
+    </p>
+
+    <!-- CHAPTER 4-5: テキストの行揃えを変更する -->
+    <h2 class="section-title text-center">主要なプロパティのまとめ</h2>
+
+    <p class="body-text">
+      CSSの学習では、実際にコードを書きながらブラウザで変化を確認することが最も効率的です。フォントサイズや行間の調整、色の変更など、小さな変化の積み重ねが美しいデザインを作ります。
+    </p>
+
+    <!-- CHAPTER 4-6: 2行目以降を1文字下げる（ぶら下げインデント） -->
+    <div class="note-box">
+      <h3>【補足事項】ハンズオンの進め方</h3>
+      <p class="hanging-indent">※1. `style.css` のコメント（`/* ... */`）に従って、数値を書き換えたりコードを追加してみましょう。</p>
+      <p class="hanging-indent">※2. 保存（Ctrl + S / Cmd + S）してからブラウザを更新（F5 / Cmd + R）すると、変更結果が反映されます。</p>
+    </div>
+
+  </main>
+    
 </body>
 </html>
