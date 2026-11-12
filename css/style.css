@@ -1,133 +1,268 @@
-@charset "UTF-8";
-
-/* ==================================================
-   CHAPTER 3: CSSの基礎知識と書式
-   セレクタ { プロパティ: 値; } の形式で記述します。
-   ================================================== */
-
-/* ページ全体の初期設定 */
-body {
-  background-color: #f8f9fa;
+/* 基本設定・明朝体ベース */
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding: 40px 20px;
+  padding: 0;
 }
 
-.container {
-  max-width: 800px;
+body {
+  font-family: "游明朝", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: #111;
+  background-color: #fff;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ================= トップページ ================= */
+.top-header {
+  height: 130px;
+}
+
+.site-title {
+  background-color: #f4a57f;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding-left: 45px;
+  font-size: 32px;
+  letter-spacing: 0.1em;
+}
+
+.top-nav {
+  background-color: #fff;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  padding-left: 55px;
+  gap: 50px;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #111;
+  font-size: 20px;
+}
+
+.top-nav a:hover {
+  opacity: 0.6;
+}
+
+/* 3分割エリア */
+.split-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 130px);
+  /* 画面全体の高さからヘッダー分を引く */
+  min-height: 450px;
+}
+
+.split-item {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.split-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* 「陸」「海」「空」の文字配置 */
+.kanji {
+  position: absolute;
+  color: #fff;
+  font-size: clamp(60px, 8vw, 110px);
+  line-height: 1;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.kanji-land {
+  top: 25px;
+  left: 25px;
+}
+
+.kanji-sea {
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.kanji-air {
+  top: 25px;
+  right: 25px;
+}
+
+/* ホバー時のエフェクト（2枚目の画像） */
+.hover-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.split-item:hover .hover-overlay {
+  opacity: 1;
+}
+
+.split-item:hover img {
+  transform: scale(1.04);
+  /* わずかにズーム */
+}
+
+.split-item:hover .kanji {
+  opacity: 0.35;
+  /* ホバー時に背面の漢字を少し薄くする */
+}
+
+.hover-text {
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.hover-arrow {
+  font-size: 42px;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+
+/* ================= 詳細ページ（3枚目の画像） ================= */
+.detail-banner {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8%;
+}
+
+/* バナー画像を少し暗くして白文字を見やすくする */
+.detail-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.detail-title {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: normal;
+  letter-spacing: 0.1em;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #fff;
+}
+
+/* 3つのカードレイアウト */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+  padding: 60px 20px 40px;
+  max-width: 1100px;
   margin: 0 auto;
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  
-  /* CHAPTER 4-4: 表示するフォントを設定する */
-  font-family: "Helvetica Neue", Arial, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", メイリオ, Meirio, sans-serif;
-  
-  /* CHAPTER 4-2: 読みやすい行間にする (標準は 1.5 〜 1.8 程度) */
-  line-height: 1.7;
-  
-  /* CHAPTER 4-7: テキスト色を変更する (ベースの文字色) */
-  color: #333333;
 }
 
-
-/* ==================================================
-   CHAPTER 4: テキストの装飾 ハンズオンセクション
-   ================================================== */
-
-/* --------------------------------------------------
-   CHAPTER 4-1: 見出しや本文のフォントサイズを調整する
-   CHAPTER 4-8: 見出しにサブタイトルをつける
-   -------------------------------------------------- */
-.main-title {
-  /* フォントサイズの調整 (remやpxを使用) */
-  font-size: 2rem; /* 32px相当 */
-  margin-top: 0;
-  margin-bottom: 24px;
-  border-bottom: 3px solid #0066cc;
-  padding-bottom: 12px;
-  color: #111111;
+.info-card {
+  width: 280px;
+  height: 310px;
+  background: #fff;
+  border-radius: 42px;
+  /* 大きめの角丸 */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-/* サブタイトルのスタイル (block化して改行表示) */
-.main-title .subtitle {
-  display: block;             /* 改行して次の行に配置 */
-  font-size: 1.1rem;          /* 親要素より小さく指定 */
-  font-weight: normal;        /* 太字を解除 */
-  color: #666666;             /* CHAPTER 4-7: 色を少し薄く */
-  margin-top: 6px;            /* メインタイトルとの余白 */
+.info-card h2 {
+  font-size: 32px;
+  font-weight: normal;
+  margin-bottom: 35px;
 }
 
-
-/* --------------------------------------------------
-   CHAPTER 4-3: 段落のテキストをリード文だけ太字にする
-   -------------------------------------------------- */
-.lead-text {
-  /* リード文のフォントサイズを本文より少し大きく */
-  font-size: 1.125rem;
-  
-  /* フォントの太さを変更 (bold / 700 など) */
-  font-weight: bold;
-  
-  /* CHAPTER 4-7: テキスト色を変更して強調 */
-  color: #0066cc;
-  
-  background-color: #eef6ff;
-  padding: 16px 20px;
-  border-left: 4px solid #0066cc;
-  border-radius: 0 4px 4px 0;
-  margin-bottom: 24px;
+.info-card p {
+  font-size: 18px;
+  color: #333;
 }
 
-.body-text {
-  /* CHAPTER 4-1: 本文のフォントサイズ */
-  font-size: 1rem; /* 16px相当 */
-  margin-bottom: 20px;
+.card-detail-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  border: 1px solid #444;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 20px;
+  transition: background 0.2s, color 0.2s;
 }
 
-
-/* --------------------------------------------------
-   CHAPTER 4-5: テキストの行揃えを変更する
-   -------------------------------------------------- */
-.section-title {
-  font-size: 1.4rem;
-  margin-top: 40px;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e0e0e0;
+.card-detail-btn:hover {
+  background: #111;
+  color: #fff;
 }
 
-/* 中央揃え用のクラス */
-.text-center {
-  /* center（中央揃え）、right（右揃え）、left（左揃え） */
+.bottom-note {
   text-align: center;
+  font-size: 16px;
+  color: #333;
+  padding-bottom: 50px;
 }
 
+/* スマホ表示用の調整 */
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column;
+    height: auto;
+  }
 
-/* --------------------------------------------------
-   CHAPTER 4-6: 2行目以降を1文字下げる（ぶら下げインデント）
-   -------------------------------------------------- */
-.note-box {
-  background-color: #fff9e6;
-  border: 1px solid #ffe599;
-  padding: 20px;
-  border-radius: 6px;
-  margin-top: 30px;
+  .split-item {
+    height: 240px;
+  }
+
+  .detail-banner {
+    justify-content: center;
+    padding-right: 0;
+  }
 }
-
-.note-box h3 {
-  margin-top: 0;
-  font-size: 1rem;
-  color: #b45f06;
-}
-
-/* ぶら下げインデントのテクニック：
-   padding-left で全体を右に寄せ、1行目だけ text-indent で左に戻す */
-.hanging-indent {
-  font-size: 0.9rem;
-  color: #555555;
-  margin: 8px 0;
   
-  padding-left: 2em;   /* 全体を2文字分右にシフト */
-  text-indent: -2em;   /* 1行目だけ2文字分左に戻す */
-}
