@@ -20,7 +20,7 @@ const pageData = {
   },
   air: {
     title: "航空自衛隊",
-    bannerImage: "air_banner.jpg", // 空の詳細バナー用画像
+    bannerImage: "sky_banner.jpg", // 空の詳細バナー用画像
     cards: [
       { title: "主な活動", desc: "（軽い説明を書く）", link: "#" },
       { title: "組織・階級", desc: "（軽い説明を書く）", link: "#" },
