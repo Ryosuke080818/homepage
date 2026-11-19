@@ -9,7 +9,7 @@ const pageData = {
         title: "主な活動",
         menuLabel: "活動",
         desc: "陸上自衛隊の主な活動について",
-        link: "land-activity.html"
+        link: "land_activity.html"
       },
       {
         title: "組織・階級",
