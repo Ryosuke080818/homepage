@@ -3,29 +3,76 @@
 const pageData = {
   land: {
     title: "陸上自衛隊",
-    bannerImage: "land_banner.jpg", // 陸の詳細バナー用画像
+    bannerImage: "land_banner.jpg",
     cards: [
-      { title: "主な活動", menuLabel: "活動", desc: "（軽い説明を書く）", link: "activity.html" },
-      { title: "組織・階級", menuLabel: "組織", desc: "（軽い説明を書く）", link: "#" },
-      { title: "歴史・過去", menuLabel: "歴史", desc: "（軽い説明を書く）", link: "#" }
+      {
+        title: "主な活動",
+        menuLabel: "活動",
+        desc: "陸上自衛隊の主な活動について",
+        link: "land-activity.html"
+      },
+      {
+        title: "組織・階級",
+        menuLabel: "組織",
+        desc: "陸上自衛隊の組織と階級について",
+        link: "land-organization.html"
+      },
+      {
+        title: "歴史・過去",
+        menuLabel: "歴史",
+        desc: "陸上自衛隊の歴史について",
+        link: "land-history.html"
+      }
     ]
   },
+
   sea: {
     title: "海上自衛隊",
-    bannerImage: "sea_banner.jpg", // 海の詳細バナー用画像
+    bannerImage: "sea_banner.jpg",
     cards: [
-      { title: "主な活動", menuLabel: "活動", desc: "（軽い説明を書く）", link: "#" },
-      { title: "組織・階級", menuLabel: "組織", desc: "（軽い説明を書く）", link: "#" },
-      { title: "歴史・過去", menuLabel: "歴史", desc: "（軽い説明を書く）", link: "#" }
+      {
+        title: "主な活動",
+        menuLabel: "活動",
+        desc: "海上自衛隊の主な活動について",
+        link: "sea-activity.html"
+      },
+      {
+        title: "組織・階級",
+        menuLabel: "組織",
+        desc: "海上自衛隊の組織と階級について",
+        link: "sea-organization.html"
+      },
+      {
+        title: "歴史・過去",
+        menuLabel: "歴史",
+        desc: "海上自衛隊の歴史について",
+        link: "sea-history.html"
+      }
     ]
   },
+
   air: {
     title: "航空自衛隊",
-    bannerImage: "sky_banner.jpg", // 空の詳細バナー用画像
+    bannerImage: "sky_banner.jpg",
     cards: [
-      { title: "主な活動", menuLabel: "活動", desc: "（軽い説明を書く）", link: "#" },
-      { title: "組織・階級", menuLabel: "組織", desc: "（軽い説明を書く）", link: "#" },
-      { title: "歴史・過去", menuLabel: "歴史", desc: "（軽い説明を書く）", link: "#" }
+      {
+        title: "主な活動",
+        menuLabel: "活動",
+        desc: "航空自衛隊の主な活動について",
+        link: "air-activity.html"
+      },
+      {
+        title: "組織・階級",
+        menuLabel: "組織",
+        desc: "航空自衛隊の組織と階級について",
+        link: "air-organization.html"
+      },
+      {
+        title: "歴史・過去",
+        menuLabel: "歴史",
+        desc: "航空自衛隊の歴史について",
+        link: "air-history.html"
+      }
     ]
   }
 };
