@@ -8,34 +8,15 @@
 </head>
 <body>
 
-  <!-- ================= 共通：ハンバーガーメニュー（トップ・詳細ページ共通） ================= -->
-
-  <!-- ハンバーガーボタン（右上に配置。開くと×印に変形してパネル上に残る） -->
-  <button class="hamburger" id="js-hamburger" type="button"
-          aria-label="メニューを開く" aria-expanded="false" aria-controls="js-panel">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <!-- メニューを開いたときに背面を暗くする幕 -->
-  <div class="menu-backdrop" id="js-backdrop"></div>
-
-  <!-- 右からスライドして出るパネル -->
-  <nav class="side-panel" id="js-panel" aria-hidden="true" aria-label="メインメニュー">
-    <p class="panel-title">メニュー</p>
-    <div class="panel-body">
-      <a href="#" class="panel-home" id="js-menu-home">ホーム</a>
-      <!-- 陸・海・空の項目は script.js の pageData から自動生成されます -->
-      <ul class="panel-groups" id="js-menu-groups"></ul>
-    </div>
-  </nav>
-
-
   <!-- ================= トップページ画面 ================= -->
   <div id="top-view">
     <header class="top-header">
-      <div class="site-title">自衛隊</div>
+      <div class="site-title">タイトル</div>
+      <nav class="top-nav">
+        <a href="#">メニュー</a>
+        <a href="#">メニュー</a>
+        <a href="#">メニュー</a>
+      </nav>
     </header>
 
     <main class="split-container">
@@ -79,38 +60,9 @@
     </div>
 
     <div class="cards-container" id="cards-container">
-      <div class="card-container">
-
-    <!-- 主な活動 -->
-    <div class="card">
-        <h2>主な活動</h2>
-        <p>（軽い説明を書く）</p>
-        <a href="activity.html" class="detail-btn">
-            詳細 ＞
-        </a>
+      <!-- JavaScriptでここに3枚のカードが自動生成されます -->
     </div>
 
-    <!-- 組織・階級 -->
-    <div class="card">
-        <h2>組織・階級</h2>
-        <p>（軽い説明を書く）</p>
-        <a href="organization.html" class="detail-btn">
-            詳細 ＞
-        </a>
-    </div>
-
-    <!-- 歴史・過去 -->
-    <div class="card">
-        <h2>歴史・過去</h2>
-        <p>（軽い説明を書く）</p>
-        <a href="history.html" class="detail-btn">
-            詳細 ＞
-        </a>
-    </div>
-
-</div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
