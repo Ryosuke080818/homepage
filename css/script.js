@@ -5,7 +5,7 @@ const pageData = {
     title: "陸上自衛隊",
     bannerImage: "land_banner.jpg", // 陸の詳細バナー用画像
     cards: [
-      { title: "主な活動", menuLabel: "活動", desc: "（軽い説明を書く）", link: "#" },
+      { title: "主な活動", menuLabel: "活動", desc: "（軽い説明を書く）", link: "activity.html" },
       { title: "組織・階級", menuLabel: "組織", desc: "（軽い説明を書く）", link: "#" },
       { title: "歴史・過去", menuLabel: "歴史", desc: "（軽い説明を書く）", link: "#" }
     ]
