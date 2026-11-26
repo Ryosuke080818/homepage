@@ -15,7 +15,7 @@ const pageData = {
         title: "組織・階級",
         menuLabel: "組織",
         desc: "陸上自衛隊の組織と階級について",
-        link: "land_rganization.html"
+        link: "land_organization.html"
       },
       {
         title: "歴史・過去",
