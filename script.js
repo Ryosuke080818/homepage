@@ -161,19 +161,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") setMenu(false);
   });
 
-  // メニュー内のリンク：該当ページへ移動してパネルを閉じる
+  // メニュー内のリンク
   panel.addEventListener("click", e => {
     const link = e.target.closest("a");
     if (!link) return;
 
+    const href = link.getAttribute("href");
+
     if (link.id === "js-menu-home") {
       showTop();
-    } else if (link.dataset.type) {
+    } else if (href === "#" && link.dataset.type) {
+      // 隊名：このページ内で詳細ページ（陸・海・空）を表示
       showDetail(link.dataset.type);
     }
+    // 活動・組織・歴史は、実際のページ（land_activity.html など）へそのまま移動する
 
     // リンク先が未設定（"#"）のときはページ遷移させない
-    if (link.getAttribute("href") === "#") e.preventDefault();
+    if (href === "#") e.preventDefault();
     setMenu(false);
   });
 });
