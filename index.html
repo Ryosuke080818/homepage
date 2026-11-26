@@ -39,33 +39,44 @@
     </header>
 
     <main class="split-container">
+      <!--
+        .split-item  … クリック・ホバーを受け取る「動かない枠」（重なり順もここで管理）
+        .split-inner … 実際に拡大する画像・黒フィルター・漢字をまとめた層
+      -->
+
       <!-- 陸 -->
       <div class="split-item" onclick="showDetail('land')">
-        <img src="img/land.jpg" alt="陸上自衛隊">
-        <span class="kanji kanji-land">陸</span>
-        <div class="hover-overlay">
-          <p class="hover-text">詳しく見る</p>
-          <span class="hover-arrow">＞</span>
+        <div class="split-inner">
+          <img src="img/land.jpg" alt="陸上自衛隊">
+          <span class="kanji kanji-land">陸</span>
+          <div class="hover-overlay">
+            <p class="hover-text">詳しく見る</p>
+            <span class="hover-arrow">＞</span>
+          </div>
         </div>
       </div>
 
       <!-- 海 -->
       <div class="split-item" onclick="showDetail('sea')">
-        <img src="img/sea.jpg" alt="海上自衛隊">
-        <span class="kanji kanji-sea">海</span>
-        <div class="hover-overlay">
-          <p class="hover-text">詳しく見る</p>
-          <span class="hover-arrow">＞</span>
+        <div class="split-inner">
+          <img src="img/sea.jpg" alt="海上自衛隊">
+          <span class="kanji kanji-sea">海</span>
+          <div class="hover-overlay">
+            <p class="hover-text">詳しく見る</p>
+            <span class="hover-arrow">＞</span>
+          </div>
         </div>
       </div>
 
       <!-- 空 -->
       <div class="split-item" onclick="showDetail('air')">
-        <img src="img/sky.jpg" alt="航空自衛隊">
-        <span class="kanji kanji-air">空</span>
-        <div class="hover-overlay">
-          <p class="hover-text">詳しく見る</p>
-          <span class="hover-arrow">＞</span>
+        <div class="split-inner">
+          <img src="img/sky.jpg" alt="航空自衛隊">
+          <span class="kanji kanji-air">空</span>
+          <div class="hover-overlay">
+            <p class="hover-text">詳しく見る</p>
+            <span class="hover-arrow">＞</span>
+          </div>
         </div>
       </div>
     </main>
@@ -81,7 +92,7 @@
     <div class="cards-container" id="cards-container">
       <!-- JavaScriptでここに3枚のカードが自動生成されます -->
     </div>
-
+  </div>
 
   <script src="script.js"></script>
 </body>
