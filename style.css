@@ -1,0 +1,471 @@
+/* 基本設定・明朝体ベース */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "游明朝", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: #111;
+  background-color: #fff;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* メニューを開いている間は背面をスクロールさせない */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ================= ハンバーガーメニュー（共通） ================= */
+
+/* ボタン：右上に固定位置（ページと一緒にスクロールする）。
+   高さはタイトルバー（75px）に揃える */
+.hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75px;
+  height: 75px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100; /* 幕・パネルよりも手前 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 34px;
+  height: 2px;
+  margin-left: -17px;
+  background-color: #111;
+  transition: top 0.3s, transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+
+.hamburger span:nth-child(1) { top: calc(50% - 12px); }
+.hamburger span:nth-child(2) { top: calc(50% - 1px); }
+.hamburger span:nth-child(3) { top: calc(50% + 10px); }
+
+/* 開いたとき：×印へ変形（白いパネルの上なので黒） */
+.hamburger.is-active span:nth-child(1) {
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
+}
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-active span:nth-child(3) {
+  top: calc(50% - 1px);
+  transform: rotate(-45deg);
+}
+
+/* 詳細ページでは暗いバナー上に置かれるので、線を白にする */
+body.is-detail .hamburger span {
+  background-color: #fff;
+}
+body.is-detail .hamburger.is-active span {
+  background-color: #111;
+}
+
+/* 背面を暗くする幕 */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+  z-index: 900;
+}
+
+.menu-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0s;
+}
+
+/* 右からスライドして出るパネル */
+.side-panel {
+  --panel-pad: 34px;   /* パネルの左右余白 */
+  --home-col: 124px;   /* 「ホーム」の列幅 */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: clamp(400px, 34vw, 520px);
+  background-color: #fff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.4s ease, visibility 0s linear 0.4s;
+  z-index: 1000;
+}
+
+.side-panel.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.4s ease, visibility 0s;
+}
+
+/* 「メニュー」見出し：タイトルバーと同じ高さの行に置く */
+.panel-title {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding-left: calc(var(--panel-pad) + var(--home-col));
+  font-size: 26px;
+  letter-spacing: 0.1em;
+}
+
+.panel-body {
+  display: flex;
+  align-items: flex-start;
+  padding: 25px var(--panel-pad) 40px;
+}
+
+.panel-body a {
+  color: #111;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.panel-body a:hover {
+  opacity: 0.55;
+}
+
+.panel-home {
+  flex: 0 0 var(--home-col);
+  font-size: 20px;
+  line-height: 1.9;
+}
+
+.panel-groups {
+  list-style: none;
+  flex: 1;
+}
+
+/* 1つの隊：左に隊名、右に 活動／組織／歴史 を縦並び */
+.panel-group {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  margin-bottom: 26px;
+}
+
+.group-name {
+  font-size: 20px;
+  line-height: 1.9;
+}
+
+.sub-list {
+  list-style: none;
+}
+
+.sub-list a {
+  font-size: 20px;
+  line-height: 2.1;
+}
+
+/* ================= トップページ ================= */
+.top-header {
+  height: 75px;
+}
+
+.site-title {
+  background-color: #f4a57f;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding-left: 45px;
+  padding-right: 90px; /* ハンバーガーボタンと重ならないように */
+  font-size: 32px;
+  letter-spacing: 0.1em;
+}
+
+/* 3分割エリア */
+.split-container {
+  position: relative;
+  z-index: 0;        /* 独立した重なり順の枠にして、ホバー中の画像がバーより手前に出ないようにする */
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 75px);
+  /* 画面全体の高さからタイトルバー分を引く */
+  min-height: 450px;
+  overflow: hidden;  /* 拡大した画像・シャドウをここで切り取る（タイトルバーに被らない） */
+}
+
+.split-item {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  /* ホバーを外したとき、縮み終わるまで手前に残す */
+  transition: transform 0.35s ease, box-shadow 0.35s ease, z-index 0s linear 0.35s;
+}
+
+.split-item img {
+  display: block; /* 画像の下に出る隙間（インライン要素の余白）を防ぐ */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* 「陸」「海」「空」の文字配置 */
+.kanji {
+  position: absolute;
+  color: #fff;
+  font-size: clamp(60px, 8vw, 110px);
+  line-height: 1;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.kanji-land {
+  top: 25px;
+  left: 25px;
+}
+
+.kanji-sea {
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.kanji-air {
+  top: 25px;
+  right: 25px;
+}
+
+/* ホバー時のエフェクト：画像＋黒フィルターごと少し大きくして手前に浮かせる */
+.hover-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.split-item:hover {
+  z-index: 10;                         /* 隣の画像より手前へ */
+  transform: scale(1.05);              /* 画像と黒フィルターを含めて少し拡大 */
+  box-shadow: 0 0 36px 8px rgba(0, 0, 0, 0.6); /* 隣の画像に落ちる影 */
+  transition: transform 0.35s ease, box-shadow 0.35s ease, z-index 0s;
+}
+
+.split-item:hover .hover-overlay {
+  opacity: 1;
+}
+
+.split-item:hover img {
+  transform: scale(1.04);
+  /* わずかにズーム */
+}
+
+.split-item:hover .kanji {
+  opacity: 0.35;
+  /* ホバー時に背面の漢字を少し薄くする */
+}
+
+.hover-text {
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.hover-arrow {
+  font-size: 42px;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+
+/* ================= 詳細ページ（3枚目の画像） ================= */
+.detail-banner {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8%;
+}
+
+/* バナー画像を少し暗くして白文字を見やすくする */
+.detail-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.detail-title {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: normal;
+  letter-spacing: 0.1em;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #fff;
+}
+
+/* 3つのカードレイアウト */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+  padding: 60px 20px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.info-card {
+  width: 280px;
+  height: 310px;
+  background: #fff;
+  border-radius: 42px;
+  /* 大きめの角丸 */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.info-card h2 {
+  font-size: 32px;
+  font-weight: normal;
+  margin-bottom: 35px;
+}
+
+.info-card p {
+  font-size: 18px;
+  color: #333;
+}
+
+.card-detail-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  border: 1px solid #444;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-detail-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+.bottom-note {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  padding-bottom: 50px;
+}
+
+/* スマホ・タブレット表示用の調整 */
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  /* flex: 1 のままだと高さが画像の元サイズ任せになり隙間の原因になるため、
+     高さを固定して縦にぴったり並べる */
+  .split-item {
+    flex: none;
+    height: 240px;
+  }
+
+  .detail-banner {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  /* メニューパネルは縦積みレイアウトに */
+  .side-panel {
+    --panel-pad: 24px;
+    width: min(86vw, 380px);
+  }
+
+  .panel-title {
+    padding-left: var(--panel-pad);
+    font-size: 22px;
+  }
+
+  .panel-body {
+    flex-direction: column;
+    padding-top: 10px;
+  }
+
+  .panel-home {
+    flex: none;
+    margin-bottom: 18px;
+  }
+
+  .panel-groups {
+    width: 100%;
+  }
+
+  .panel-group {
+    grid-template-columns: 8em 1fr;
+    margin-bottom: 22px;
+  }
+
+  .site-title {
+    font-size: 26px;
+    padding-left: 24px;
+  }
+}
+
+/* 動きを減らす設定のユーザーにはアニメーションを抑える */
+@media (prefers-reduced-motion: reduce) {
+  .side-panel,
+  .menu-backdrop,
+  .hamburger span,
+  .split-item,
+  .split-item img {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}

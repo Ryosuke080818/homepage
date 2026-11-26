@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自衛隊紹介サイト</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= 共通：ハンバーガーメニュー（トップ・詳細ページ共通） ================= -->
+
+  <!-- ハンバーガーボタン（右上に配置。開くと×印に変形してパネル上に残る） -->
+  <button class="hamburger" id="js-hamburger" type="button"
+          aria-label="メニューを開く" aria-expanded="false" aria-controls="js-panel">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- メニューを開いたときに背面を暗くする幕 -->
+  <div class="menu-backdrop" id="js-backdrop"></div>
+
+  <!-- 右からスライドして出るパネル -->
+  <nav class="side-panel" id="js-panel" aria-hidden="true" aria-label="メインメニュー">
+    <p class="panel-title">メニュー</p>
+    <div class="panel-body">
+      <a href="#" class="panel-home" id="js-menu-home">ホーム</a>
+      <!-- 陸・海・空の項目は script.js の pageData から自動生成されます -->
+      <ul class="panel-groups" id="js-menu-groups"></ul>
+    </div>
+  </nav>
+
+
+  <!-- ================= トップページ画面 ================= -->
+  <div id="top-view">
+    <header class="top-header">
+      <div class="site-title">自衛隊</div>
+    </header>
+
+    <main class="split-container">
+      <!-- 陸 -->
+      <div class="split-item" onclick="showDetail('land')">
+        <img src="img/land.jpg" alt="陸上自衛隊">
+        <span class="kanji kanji-land">陸</span>
+        <div class="hover-overlay">
+          <p class="hover-text">詳しく見る</p>
+          <span class="hover-arrow">＞</span>
+        </div>
+      </div>
+
+      <!-- 海 -->
+      <div class="split-item" onclick="showDetail('sea')">
+        <img src="img/sea.jpg" alt="海上自衛隊">
+        <span class="kanji kanji-sea">海</span>
+        <div class="hover-overlay">
+          <p class="hover-text">詳しく見る</p>
+          <span class="hover-arrow">＞</span>
+        </div>
+      </div>
+
+      <!-- 空 -->
+      <div class="split-item" onclick="showDetail('air')">
+        <img src="img/sky.jpg" alt="航空自衛隊">
+        <span class="kanji kanji-air">空</span>
+        <div class="hover-overlay">
+          <p class="hover-text">詳しく見る</p>
+          <span class="hover-arrow">＞</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ================= 詳細ページ画面（初期状態は非表示） ================= -->
+  <div id="detail-view" class="hidden">
+    <div class="detail-banner" id="detail-banner">
+      <button class="back-btn" onclick="showTop()">＜ トップへ戻る</button>
+      <h1 class="detail-title" id="detail-title">陸上自衛隊</h1>
+    </div>
+
+    <div class="cards-container" id="cards-container">
+      <!-- JavaScriptでここに3枚のカードが自動生成されます -->
+    </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
