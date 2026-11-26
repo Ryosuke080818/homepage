@@ -15,13 +15,13 @@ const pageData = {
         title: "組織・階級",
         menuLabel: "組織",
         desc: "陸上自衛隊の組織と階級について",
-        link: "land-organization.html"
+        link: "lando_rganization.html"
       },
       {
         title: "歴史・過去",
         menuLabel: "歴史",
         desc: "陸上自衛隊の歴史について",
-        link: "land-history.html"
+        link: "land_history.html"
       }
     ]
   },
@@ -34,19 +34,19 @@ const pageData = {
         title: "主な活動",
         menuLabel: "活動",
         desc: "海上自衛隊の主な活動について",
-        link: "sea-activity.html"
+        link: "sea_activity.html"
       },
       {
         title: "組織・階級",
         menuLabel: "組織",
         desc: "海上自衛隊の組織と階級について",
-        link: "sea-organization.html"
+        link: "sea_organization.html"
       },
       {
         title: "歴史・過去",
         menuLabel: "歴史",
         desc: "海上自衛隊の歴史について",
-        link: "sea-history.html"
+        link: "sea_history.html"
       }
     ]
   },
@@ -59,19 +59,19 @@ const pageData = {
         title: "主な活動",
         menuLabel: "活動",
         desc: "航空自衛隊の主な活動について",
-        link: "air-activity.html"
+        link: "air_activity.html"
       },
       {
         title: "組織・階級",
         menuLabel: "組織",
         desc: "航空自衛隊の組織と階級について",
-        link: "air-organization.html"
+        link: "air_organization.html"
       },
       {
         title: "歴史・過去",
         menuLabel: "歴史",
         desc: "航空自衛隊の歴史について",
-        link: "air-history.html"
+        link: "air_history.html"
       }
     ]
   }
